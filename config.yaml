@@ -1,0 +1,56 @@
+# YOLO-IOUTracker 설정 파일
+
+# 모델 설정
+model:
+  path: "yolov8n.pt"  # YOLO 모델 경로
+  device: ""  # 추론 장치 (빈 문자열이면 자동 선택, 예: "cuda:0", "cpu")
+  
+# 객체 감지 설정
+detection:
+  confidence_threshold: 0.25  # 객체 감지 신뢰도 임계값
+  iou_threshold: 0.45  # NMS IOU 임계값
+  frame_interval: 1  # 객체 감지 실행 간격 (프레임)
+  
+# 객체 추적 설정
+tracking:
+  iou_threshold: 0.3  # 추적 매칭을 위한 IOU 임계값
+  max_disappeared: null  # ID 유지 최대 프레임 수 (null이면 keep_duration_sec 사용)
+  keep_duration_sec: 2.0  # ID 유지 시간 (초)
+  history_size: 20  # 이동 경로 저장 크기
+  
+  # 추적할 클래스 그룹 정의
+  tracking_classes:
+    Equipment:  # 장비 그룹 (ID: E0, E1, ...)
+      - Forklift
+      - Excavator
+      - DumpTruck
+      - MobileCrane
+      - Crane
+    Person:  # 사람 그룹 (ID: P0, P1, ...)
+      - Person
+      
+# 시각화 설정
+visualization:
+  draw_history: true  # 이동 경로 표시 여부
+  text_scale: 0.7  # 텍스트 크기
+  text_thickness: 2  # 텍스트 두께
+  colors:  # 클래스별 색상 (BGR 형식)
+    default: [0, 255, 0]  # 녹색
+    person: [0, 165, 255]  # 주황색
+    vehicle: [255, 0, 0]  # 파란색
+    equipment: [0, 255, 255]  # 노란색
+    helmet: [255, 0, 255]  # 자홍색
+    vest: [255, 255, 0]  # 청록색
+    track: [0, 0, 255]  # 빨간색 (경로)
+    text: [255, 255, 255]  # 흰색
+    
+# 출력 설정
+output:
+  save_dir: "detection_results"  # 감지 결과 저장 디렉토리
+  video_format: "mp4v"  # 비디오 코덱
+  save_json: true  # JSON 결과 저장 여부
+  
+# 성능 설정
+performance:
+  fps_limit: null  # FPS 제한 (null이면 제한 없음)
+  progress_log_interval: 100  # 진행 상황 로그 출력 간격 (프레임)

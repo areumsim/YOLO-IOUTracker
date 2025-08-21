@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv
+*.egg-info/
+dist/
+build/
+
+# YOLO models
+*.pt
+*.onnx
+*.engine
+*.pth
+*.weights
+
+# Output files
+detection_results/*
+!detection_results/.gitkeep
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+
+# JSON outputs
+*.json
+!config.json
+!package.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.project
+.pydevproject
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Test files
+test_*.mp4
+test_*.avi
+sample_*.mp4
+sample_*.avi
